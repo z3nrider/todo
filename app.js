@@ -15,10 +15,12 @@ mongoose.connect(dbURI)
     })
     .catch((err) => { console.log(err) });
 
-app.use(express.static(__dirname + ""));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'views')));
+app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '/index.html'))
+    res.render(path.join(__dirname, '/views/index.ejs'))
 });
 
 app.get('/create-todo', (req, res) => {
