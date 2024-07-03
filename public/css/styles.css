@@ -1,0 +1,24 @@
+.mainCard {
+    margin-top: 5em;
+}
+
+.mainContainer {
+    background-color:rgb(137, 230, 185);
+}
+
+html body {
+    background-color:rgb(137, 230, 185);
+}
+
+#button-addon2 {
+    background-color:rgb(63, 109, 87);
+
+    color: white;
+    margin-top: 1em;
+}
+
+#button-addon2:hover {
+    background-color:rgb(137, 230, 185);
+
+    color: white;
+}

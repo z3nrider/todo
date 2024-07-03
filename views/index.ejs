@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Link to your CSS file -->
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <%- include('../views/partials/header.ejs') %>
+    <div class="container mainContainer">
+        <div class="card mx-auto mainCard shadow-lg">
+            <img src="/images/todoPhoto-cropped.png" class="card-img-top" alt="a photo of a notepad and pencil" id="mainPhoto">
+            <div class="card-body">
+                <h5 class="card-title">Add a Todo</h5>
+                <p class="card-text mainCardText">
+                    <form action="/submit-todo" method="POST" id="todoForm" class="needs-validation" novalidate>
+                        <div class="form-group">
+                            <label for="todoItem" class="form-label">Task</label>
+                            <input type="text" id="todoItem" name="todoItem" class="form-control" placeholder="What needs done?" aria-label="Todo item" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please enter a task.
+                            </div>
+                        <div class="row">
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <label for="todoPriority" class="form-label">Priority</label>
+                                    <select id="todoPriority" name="todoPriority" class="form-control" aria-label="Todo priority">
+                                        <option value="low">!</option>
+                                        <option value="medium">!!</option>
+                                        <option value="high">!!!</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-10">
+                                <div class="form-group">
+                                    <label for="todoDate" class="form-label">Due Date</label>
+                                    <input type="date" id="todoDate" name="todoDate" class="form-control" aria-label="Todo date" required>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please enter a due date.
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Submit</button>
+                        </div>
+                    </form>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        window.onload = function() {
+            document.getElementById('todoForm').reset();
+        };
+    </script>
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+          'use strict';
+          window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+              form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                  event.preventDefault();
+                  event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+              }, false);
+            });
+          }, false);
+        })();
+    </script>
+    <%- include('../views/partials/footer.ejs')  %>
+</body>
+</html>
